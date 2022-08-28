@@ -1,3 +1,18 @@
+const startGame = document.querySelector(".start");
+const numOfGames = document.querySelector(".games");
+const enter = document.querySelector(".enter");
+const inactive = document.querySelectorAll(".inactive");
+startGame.addEventListener("click", openPopup);
+enter.addEventListener("click", initializeGame);
+
+
+
+function openPopup(){
+inactive.forEach((elem) => {
+    elem.classList.add("active");
+})
+}
+
 function computerPlay()
 {
     let x = Math.floor((Math.random() * 3) + 1);
@@ -42,14 +57,22 @@ function playRound()
 
 function game()
 {   let Count = 0; 
-    for(let i = 0; i < 5; i++)
+    for(let i = 0; i < numOfGames.value; i++)
     {
         if(playRound() == "Computer Wins")
         {
             Count++;
         }  
     }
-    if(Count >=3){return "Computer wins";}
-    if(Count < 3){return "Player wins";}
-    if(Count == 0){return "Draw";}
+    if(Count >= numOfGames.value/2){console.log("comp"); return "Computer wins";}
+    if(Count < numOfGames.value/2){console.log("pl"); return "Player wins";}
+    if(Count == 0){console.log("dr"); return "Draw";}
+}
+
+function initializeGame(){
+    inactive.forEach((elem) => {
+        elem.classList.remove("active");
+    })
+    startGame.classList.add("active");
+    game();
 }

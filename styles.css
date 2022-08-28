@@ -1,0 +1,73 @@
+*, *::after, *::before {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+#background {
+  position: fixed;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  background-color: rgba(0, 0, 0, 0.5);
+  transform: scale(0);
+  transition: 200ms;
+}
+
+#popup {
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%) scale(0);
+  background-color: white;
+  z-index: 10;
+  padding: 1.5% 0%;
+  border-radius: 10px;
+  transition: 200ms;
+  text-align: center;
+}
+#popup .enter {
+  margin-top: 3%;
+  padding: 0.5% 2%;
+}
+
+.games {
+  padding: 1%;
+  width: 260px;
+  text-align: center;
+}
+
+#background.active {
+  transform: scale(1);
+}
+
+#popup.active {
+  transform: translate(-50%, -50%) scale(1);
+}
+
+.controls.active {
+  transform: scale(0);
+}
+
+.start.active {
+  transform: scale(0);
+}
+
+.start {
+  position: fixed;
+  top: 45%;
+  left: 45%;
+  background: none;
+  color: black;
+  border: none;
+  padding: 2%;
+  font: inherit;
+  cursor: pointer;
+  outline: solid black 2px;
+  font-weight: 600;
+  border-radius: 50%;
+  aspect-ratio: 1/1;
+  font-size: 1.4rem;
+  box-shadow: 0px 5px 10px -1px;
+}/*# sourceMappingURL=styles.css.map */
