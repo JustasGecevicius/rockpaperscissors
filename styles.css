@@ -4,6 +4,11 @@
   box-sizing: border-box;
 }
 
+body {
+  height: 100vh;
+  width: 100vw;
+}
+
 #background {
   position: fixed;
   top: 0;
@@ -15,6 +20,10 @@
   transition: 200ms;
 }
 
+#background.active {
+  transform: scale(1);
+}
+
 .controls {
   position: fixed;
   display: flex;
@@ -23,6 +32,10 @@
   justify-content: center;
   align-items: center;
   outline: solid green;
+}
+
+.controls.active {
+  transform: scale(0);
 }
 
 #popup {
@@ -42,26 +55,14 @@
   padding: 0.5% 2%;
 }
 
-.games {
-  padding: 1%;
-  width: 260px;
-  text-align: center;
-}
-
-#background.active {
-  transform: scale(1);
-}
-
 #popup.active {
   transform: translate(-50%, -50%) scale(1);
 }
 
-.controls.active {
-  transform: scale(0);
-}
-
-.start.active {
-  transform: scale(0);
+.games {
+  padding: 1%;
+  width: 260px;
+  text-align: center;
 }
 
 .start {
@@ -79,6 +80,10 @@
   box-shadow: 0px 5px 10px -1px;
 }
 
+.start.active {
+  transform: scale(0);
+}
+
 .gamePopup {
   position: fixed;
   top: 85%;
@@ -86,14 +91,9 @@
   display: flex;
   -moz-column-gap: 10%;
        column-gap: 10%;
-  transform: scale(0);
 }
 .gamePopup button {
   padding: 1% 4%;
-}
-
-.gamePopup.active {
-  transform: scale(1);
 }
 
 .gameEnd {
@@ -108,5 +108,60 @@
 }
 
 .gameEnd.active {
+  transform: scale(1);
+}
+
+.gameScreen {
+  position: fixed;
+  display: flex;
+  flex-direction: column;
+  transform: scale(0);
+  height: 100%;
+  width: 100%;
+}
+.gameScreen .images {
+  outline: solid red;
+  width: 100%;
+  flex-basis: 80%;
+  display: flex;
+  flex-direction: row;
+}
+.gameScreen .images .playerImage {
+  flex-basis: auto;
+  outline: solid green;
+}
+.gameScreen .images .playerImage img {
+  transform: scale(0);
+}
+.gameScreen .images .playerImage img.active {
+  transform: scale(1);
+}
+.gameScreen .images .computerImage {
+  flex-basis: auto;
+  outline: solid orange;
+}
+.gameScreen .images .computerImage img {
+  transform: scale(0);
+}
+.gameScreen .images .computerImage img.active {
+  transform: scale(1);
+}
+.gameScreen .gamePopup {
+  flex-basis: 20%;
+}
+
+.gameScreen.active {
+  transform: scale(1);
+}
+
+.playerWins.active {
+  transform: scale(1);
+}
+
+.computerWins.active {
+  transform: scale(1);
+}
+
+.draw.active {
   transform: scale(1);
 }/*# sourceMappingURL=styles.css.map */

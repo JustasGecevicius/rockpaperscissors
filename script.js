@@ -6,6 +6,7 @@ const rock = document.querySelector(".rock");
 const scissors = document.querySelector(".scissors");
 const paper = document.querySelector(".paper");
 const gameControls = document.querySelector(".gamePopup");
+const gameScreen = document.querySelector(".gameScreen");
 const playerWinScreen = document.querySelector(".playerWins");
 const computerWinScreen = document.querySelector(".computerWins");
 const drawScreen = document.querySelector(".draw");
@@ -98,13 +99,6 @@ function playRound(event)
 
 function game()
 {  
-    // for(let i = 0; i < numOfGames.value; i++)
-    // {
-    //     if(playRound() == "Computer Wins")
-    //     {
-    //         Count++;
-    //     }  
-    // }
     if(computerWinsCount > numOfGames.value/2) computerWins();
     if(playerWinsCount > numOfGames.value/2) playerWins();
     if(gamesCount == numOfGames.value){
@@ -120,17 +114,24 @@ function initializeGame(){
     })
     startGame.classList.add("active");
     gameControls.classList.add("active");
+    gameScreen.classList.add("active");
 }
 
 function playerWins(){
+    console.log("p");
     playerWinScreen.classList.add("active");
     gameControls.classList.remove("active");
+    gameScreen.classList.remove("active");
 }
 function computerWins(){
+    console.log("c");
    computerWinScreen.classList.add("active");
    gameControls.classList.remove("active");
+   gameScreen.classList.remove("active");
 }
 function draw(){
+    console.log("d");
     drawScreen.classList.add("active");
     gameControls.classList.remove("active");
+    gameScreen.classList.remove("active");
 }
