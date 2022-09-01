@@ -7,6 +7,9 @@
     <title>RockPaperScissors</title>
     <script src="script.js" defer></script> 
     <link type="text/css" href="styles.css" rel="stylesheet">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Barlow:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap" rel="stylesheet">
 </head>
 <body>
     <div class="controls inactive">
@@ -14,44 +17,44 @@
     </div>    
     
         <div id="popup" class="inactive">
-            <input class="games" type="number" placeholder="How many games do you want to play?">
-            <button class="enter">enter</button>
+            <input class="games" type="number" placeholder="Number of Games">
+            <button class="enter button-85" role="button">Enter</button>
         </div>
         <div id="background" class="inactive">            
     </div>
     <div class="gameScreen">
-        <div class="images">
+        <div class="images active">
             <div class="playerImage">
-                <img src="/Images/paper.gif" alt="#" class="paperPlayer active"/>
-                <img src="/Images/rock.gif" alt="#" class="rockPlayer"/>
-                <img src="/Images/scissors.gif" alt="#" class="scissorsPlayer"/>
+                <img data-image="paper" src="/Images/paper.gif" alt="#" class="Player"/>
+                <img data-image="rock" src="/Images/rock.gif" alt="#" class="Player"/>
+                <img data-image="scissors" src="/Images/scissors.gif" alt="#" class="Player"/>
             </div>
             <div class="computerImage">
-                <img src="/Images/paper.gif" alt="#" class="scissorsComputer active"/>
-                <img src="/Images/rock.gif" alt="#" class="scissorsComputer"/>
-                <img src="/Images/scissors.gif" alt="#" class="scissorsComputer"/>
+                <img data-image="paper" src="/Images/paper.gif" alt="#" class="Computer"/>
+                <img data-image="rock" src="/Images/rock.gif" alt="#" class="Computer"/>
+                <img data-image="scissors" src="/Images/scissors.gif" alt="#" class="Computer"/>
             </div>
         </div>
         <div class="gamePopup">
-            <button class="rock">Rock</button>
-            <button class="paper">Paper</button>
-            <button class="scissors">Scissors</button>
+            <button class="rock button-85" role="button">Rock</button>
+            <button class="paper button-85" role="button">Paper</button>
+            <button class="scissors button-85" role="button">Scissors</button>
         </div>
     </div>
     <div class="playerWins gameEnd">
         <h1>Player Wins</h1>
-        <button class="restartGame">Restart Game</button>
-        <button class="exit">Exit</button>    
+        <button class="restartGame button-85" role="button">Restart Game</button>
+        <button class="exit button-85" role="button">Exit</button>    
     </div>
     <div class="computerWins gameEnd">
         <h1>Computer Wins</h1>
-        <button class="restartGame">Restart Game</button> 
-        <button class="exit">Exit</button>  
+        <button class="restartGame button-85" role="button">Restart Game</button>
+        <button class="exit button-85" role="button">Exit</button>     
     </div>
     <div class="draw gameEnd">
         <h1>Draw</h1>
-        <button class="restartGame">Restart Game</button> 
-        <button class="exit">Exit</button>  
+        <button class="restartGame button-85" role="button">Restart Game</button>
+        <button class="exit button-85" role="button">Exit</button>    
     </div>         
 </body>
 </html>

@@ -2,6 +2,7 @@
   margin: 0;
   padding: 0;
   box-sizing: border-box;
+  font-family: "Barlow";
 }
 
 body {
@@ -31,7 +32,6 @@ body {
   height: 100%;
   justify-content: center;
   align-items: center;
-  outline: solid green;
 }
 
 .controls.active {
@@ -45,8 +45,9 @@ body {
   transform: translate(-50%, -50%) scale(0);
   background-color: white;
   z-index: 10;
-  padding: 1.5% 0%;
+  padding: 15px 5px;
   border-radius: 10px;
+  border: solid black 2px;
   transition: 200ms;
   text-align: center;
 }
@@ -59,10 +60,91 @@ body {
   transform: translate(-50%, -50%) scale(1);
 }
 
+/* CSS */
+.button-85 {
+  font-size: 1.2rem;
+  width: 100%;
+  border: none;
+  outline: none;
+  color: rgb(255, 255, 255);
+  background: #111;
+  cursor: pointer;
+  position: relative;
+  z-index: 0;
+  border-radius: 10px;
+  -moz-user-select: none;
+   -ms-user-select: none;
+       user-select: none;
+  -webkit-user-select: none;
+  touch-action: manipulation;
+}
+
+.button-85:before {
+  content: "";
+  background: linear-gradient(45deg, #ff0000, #ff7300, #fffb00, #48ff00, #00ffd5, #002bff, #7a00ff, #ff00c8, #ff0000);
+  position: absolute;
+  top: -2px;
+  left: -2px;
+  background-size: 400%;
+  z-index: -1;
+  filter: blur(5px);
+  -webkit-filter: blur(5px);
+  width: calc(100% + 4px);
+  height: calc(100% + 4px);
+  -webkit-animation: glowing-button-85 20s linear infinite;
+          animation: glowing-button-85 20s linear infinite;
+  transition: opacity 0.3s ease-in-out;
+  border-radius: 10px;
+}
+
+@-webkit-keyframes glowing-button-85 {
+  0% {
+    background-position: 0 0;
+  }
+  50% {
+    background-position: 400% 0;
+  }
+  100% {
+    background-position: 0 0;
+  }
+}
+
+@keyframes glowing-button-85 {
+  0% {
+    background-position: 0 0;
+  }
+  50% {
+    background-position: 400% 0;
+  }
+  100% {
+    background-position: 0 0;
+  }
+}
+.button-85:after {
+  z-index: -1;
+  content: "";
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  background: #222;
+  left: 0;
+  top: 0;
+  border-radius: 10px;
+}
+
 .games {
   padding: 1%;
-  width: 260px;
+  width: 80%;
   text-align: center;
+  margin-bottom: 5px;
+  font-size: 1.2rem;
+  border: solid black 1px;
+  border-radius: 5px;
+}
+
+.enter {
+  position: relative;
+  left: -7px;
 }
 
 .start {
@@ -77,7 +159,7 @@ body {
   border-radius: 50%;
   aspect-ratio: 1/1;
   font-size: 1.4rem;
-  box-shadow: 0px 5px 10px -1px;
+  box-shadow: 0px 8px 0px 2px;
 }
 
 .start.active {
@@ -85,12 +167,13 @@ body {
 }
 
 .gamePopup {
-  position: fixed;
+  position: absolute;
   top: 85%;
-  left: 45%;
+  width: 100%;
   display: flex;
   -moz-column-gap: 10%;
        column-gap: 10%;
+  justify-content: center;
 }
 .gamePopup button {
   padding: 1% 4%;
@@ -105,6 +188,10 @@ body {
   height: 100%;
   width: 100%;
   transform: scale(0);
+  transition: 600ms;
+  width: 100%;
+  height: 100%;
+  background-color: white;
 }
 
 .gameEnd.active {
@@ -115,32 +202,37 @@ body {
   position: fixed;
   display: flex;
   flex-direction: column;
+  transition: 2000ms;
   transform: scale(0);
   height: 100%;
   width: 100%;
 }
 .gameScreen .images {
-  outline: solid red;
-  width: 100%;
   flex-basis: 80%;
   display: flex;
   flex-direction: row;
 }
 .gameScreen .images .playerImage {
-  flex-basis: auto;
-  outline: solid green;
+  flex-basis: 50%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
 .gameScreen .images .playerImage img {
+  position: absolute;
   transform: scale(0);
 }
 .gameScreen .images .playerImage img.active {
   transform: scale(1);
 }
 .gameScreen .images .computerImage {
-  flex-basis: auto;
-  outline: solid orange;
+  flex-basis: 50%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
 .gameScreen .images .computerImage img {
+  position: absolute;
   transform: scale(0);
 }
 .gameScreen .images .computerImage img.active {
@@ -150,8 +242,31 @@ body {
   flex-basis: 20%;
 }
 
+.images.active {
+  opacity: 0;
+}
+
+@-webkit-keyframes fadeIn {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
 .gameScreen.active {
   transform: scale(1);
+  -webkit-animation: fadeIn 2s;
+          animation: fadeIn 2s;
 }
 
 .playerWins.active {
@@ -164,4 +279,15 @@ body {
 
 .draw.active {
   transform: scale(1);
+}
+
+.start.style {
+  box-shadow: 0 0 0 0;
+  transform: scale(0.99) translateY(10px);
+}
+
+button {
+  margin-top: 20px;
+  padding: 5px 5px;
+  max-width: 200px;
 }/*# sourceMappingURL=styles.css.map */
