@@ -138,7 +138,6 @@ body{
 }
 .enter{
     position: relative;
-    left: -7px;
 }
 .start{
     background: none;
@@ -192,7 +191,7 @@ width: 100%;
     position: fixed;
     display: flex;
     flex-direction: column;
-    transition: 2000ms;
+    transition: 1000ms;
     transform: scale(0);
     height: 100%;
     width: 100%;
@@ -268,4 +267,17 @@ button {
     margin-top: 20px;
     padding: 5px 5px;
     max-width: 200px;
+}
+input::-webkit-outer-spin-button,
+input::-webkit-inner-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
+.scoreLayout{
+    display: inline-block;
+
+}
+.score{
+    text-align: center;
+    margin-bottom: 15%;
 }

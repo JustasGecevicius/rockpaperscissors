@@ -20,6 +20,9 @@ const restartGameButtons = document.querySelectorAll(".restartGame");
 const exitGameButtons = document.querySelectorAll(".exit");
 const images = document.querySelector(".images");
 const controls = document.querySelector(".controls");
+const playerScore = document.querySelector("#playerScore");
+const computerScore = document.querySelector("#computerScore");
+let regex = /^\d+$/;
 let computerWinsCount = 0;
 let playerWinsCount = 0; 
 let gamesCount = 0;
@@ -89,27 +92,34 @@ function playRound(clickEvent){
             console.log("even");
             return "even"; 
         case computer == "rock" && player == "paper":
+            
             playerWinsCount++;
+            playerScore.innerHTML = playerWinsCount;
             console.log("player");
             return "Player wins"; 
         case computer == "paper" && player == "scissors":
             console.log("player");
             playerWinsCount++;
+            playerScore.innerHTML = playerWinsCount;
             return "Player wins"; 
         case computer == "scissors" && player == "rock":
             playerWinsCount++;
+            playerScore.innerHTML = playerWinsCount;
             console.log("player");
             return "Player wins";
         case computer == "paper" && player == "rock":
             computerWinsCount++;
+            computerScore.innerHTML = computerWinsCount;
             console.log("computer");
             return "Computer Wins"; 
         case computer == "scissors" && player == "paper":
             computerWinsCount++;
+            computerScore.innerHTML = computerWinsCount;
             console.log("computer");
             return "Computer Wins"; 
         case computer == "rock" && player == "scissors":
             computerWinsCount++;
+            computerScore.innerHTML = computerWinsCount;
             console.log("computer");
             return "Computer Wins";
         default: break;
@@ -121,45 +131,52 @@ function game()
     if(computerWinsCount > numOfGames.value/2) computerWins();
     if(playerWinsCount > numOfGames.value/2) playerWins();
     if(gamesCount == numOfGames.value){
-        if(playerWinsCount > computerWinsCount) {setTimeout(playerWins, 1000)};
-        if(playerWinsCount < computerWinsCount) {setTimeout(computerWins, 1000)};
-        if(playerWinsCount == computerWinsCount) {setTimeout(draw, 1000)};
+        if(playerWinsCount > computerWinsCount) playerWins();
+        if(playerWinsCount < computerWinsCount) computerWins();
+        if(playerWinsCount == computerWinsCount) draw();
     }
 }
 
 function initializeGame(){
+    console.log(regex.test(numOfGames.value))
+    if(numOfGames.value > 0 && regex.test(numOfGames.value)){      
     numberOfGamesChoice.classList.remove("active");
     background.classList.remove("active");
     gameControls.classList.add("active");
     gameScreen.classList.add("active");
+    }
+    else{window.alert("Invalid number of Games")}
 }
 
 function playerWins(){
-    playerWinScreen.classList.add("active");
+    
     gameControls.classList.remove("active");
     gameScreen.classList.remove("active");
     restartGameButtons.forEach(elem => {
         elem.addEventListener("click", restartGameFunction);
     })
     exitGameButtons.forEach(elem => {elem.addEventListener("click", exitGame)});
+    setTimeout(() => {playerWinScreen.classList.add("active")}, 1000);
 }
 function computerWins(){
-   computerWinScreen.classList.add("active");
+
    gameControls.classList.remove("active");
    gameScreen.classList.remove("active");
    restartGameButtons.forEach(elem => {
     elem.addEventListener("click", restartGameFunction);
 })
 exitGameButtons.forEach(elem => {elem.addEventListener("click", exitGame)});
+setTimeout(() => {computerWinScreen.classList.add("active")}, 1000);
 }
 function draw(){
-    drawScreen.classList.add("active");
+
     gameControls.classList.remove("active");
     gameScreen.classList.remove("active");
     restartGameButtons.forEach(elem => {
         elem.addEventListener("click", restartGameFunction);
     })
     exitGameButtons.forEach(elem => {elem.addEventListener("click", exitGame)});
+    setTimeout(() => {drawScreen.classList.add("active")}, 1000);
 }
 
 function changePlayerImage(buttonClickEvent){
@@ -190,6 +207,8 @@ function restartGameFunction(){
     drawScreen.classList.remove("active");
     computerWinScreen.classList.remove("active");
     playerWinScreen.classList.remove("active");
+    playerScore.innerHTML = 0;
+    computerScore.innerHTML = 0;
     computerWinsCount = 0;
     playerWinsCount = 0; 
     gamesCount = 0;
@@ -203,6 +222,8 @@ function exitGame(){
     controls.classList.remove("active");
     computerWinScreen.classList.remove("active");
     playerWinScreen.classList.remove("active");
+    playerScore.innerHTML = 0;
+    computerScore.innerHTML = 0;
     computerWinsCount = 0;
     playerWinsCount = 0; 
     gamesCount = 0;
